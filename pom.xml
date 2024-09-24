@@ -2,105 +2,69 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
+  <groupId>com.cplier</groupId>
+  <artifactId>learning-webflux</artifactId>
+  <version>${revision}${changelist}</version>
+  <packaging>pom</packaging>
+  <name>learning-webflux</name>
+  <description>learning-webflux</description>
+
   <parent>
     <groupId>org.springframework.boot</groupId>
     <artifactId>spring-boot-starter-parent</artifactId>
     <version>3.3.3</version>
     <relativePath/> <!-- lookup parent from repository -->
   </parent>
-  <groupId>com.cplier</groupId>
-  <artifactId>learning-webflux</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
-  <name>learning-webflux</name>
-  <description>learning-webflux</description>
-  <url/>
-  <licenses>
-    <license/>
-  </licenses>
-  <developers>
-    <developer/>
-  </developers>
-  <scm>
-    <connection/>
-    <developerConnection/>
-    <tag/>
-    <url/>
-  </scm>
+
+  <modules>
+    <module>learning-webflux-common</module>
+    <module>learning-webflux-repository</module>
+    <module>learning-webflux-app</module>
+  </modules>
+
   <properties>
-    <java.version>17</java.version>
+    <java.version>${java.version}</java.version>
+    <maven.compiler.source>${java.version}</maven.compiler.source>
+    <maven.compiler.target>${java.version}</maven.compiler.target>
+    <coap.version>3.12.1</coap.version>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
-  <dependencies>
-    <dependency>
-      <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-actuator-autoconfigure</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-starter-actuator</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-starter-data-r2dbc</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-starter-webflux</artifactId>
-    </dependency>
 
-    <dependency>
-      <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-devtools</artifactId>
-      <scope>runtime</scope>
-      <optional>true</optional>
-    </dependency>
-    <dependency>
-      <groupId>com.h2database</groupId>
-      <artifactId>h2</artifactId>
-      <scope>runtime</scope>
-    </dependency>
-    <dependency>
-      <groupId>io.r2dbc</groupId>
-      <artifactId>r2dbc-h2</artifactId>
-      <scope>runtime</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-configuration-processor</artifactId>
-      <optional>true</optional>
-    </dependency>
-    <dependency>
-      <groupId>org.projectlombok</groupId>
-      <artifactId>lombok</artifactId>
-      <optional>true</optional>
-    </dependency>
-    <dependency>
-      <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-starter-test</artifactId>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>io.projectreactor</groupId>
-      <artifactId>reactor-test</artifactId>
-      <scope>test</scope>
-    </dependency>
-  </dependencies>
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>com.cplier</groupId>
+        <artifactId>learning-webflux-common</artifactId>
+        <version>${revision}${changelist}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.cplier</groupId>
+        <artifactId>learning-webflux-repository</artifactId>
+        <version>${revision}${changelist}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.cplier</groupId>
+        <artifactId>learning-webflux-app</artifactId>
+        <version>${revision}${changelist}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.eclipse.californium</groupId>
+        <artifactId>californium-core</artifactId>
+        <version>${coap.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.eclipse.californium</groupId>
+        <artifactId>scandium</artifactId>
+        <version>${coap.version}</version>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
 
-  <build>
-    <plugins>
-      <plugin>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-maven-plugin</artifactId>
-        <configuration>
-          <mainClass>com.cplier.Application</mainClass>
-          <excludes>
-            <exclude>
-              <groupId>org.projectlombok</groupId>
-              <artifactId>lombok</artifactId>
-            </exclude>
-          </excludes>
-        </configuration>
-      </plugin>
-    </plugins>
-  </build>
 
+  <scm>
+    <connection>scm:git:git@github.com:barudisshu/learning-webflux.git</connection>
+    <developerConnection>scm:git:git@github.com:barudisshu/learning-webflux.git</developerConnection>
+    <url>https://github.com/barudisshu/learning-webflux</url>
+    <tag>HEAD</tag>
+  </scm>
 </project>

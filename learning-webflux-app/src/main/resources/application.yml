@@ -1,0 +1,6 @@
+spring:
+  application:
+    name: learning-webflux
+
+  r2dbc:
+    url: r2dbc:h2:file:///./testdb
